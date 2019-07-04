@@ -1,0 +1,4 @@
+<div fxLayout="row wrap" fxLayoutAlign="start start">
+  <app-user-card [user]=user [showButtons]=showButtons (accept)="onAccept($event)" (reject)="onReject($event)"
+    fxFlex="30%" *ngFor="let user of users"></app-user-card>
+</div>

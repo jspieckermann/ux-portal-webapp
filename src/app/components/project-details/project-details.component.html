@@ -1,0 +1,8 @@
+<app-project-card [project]=project [compact]="false" [applyApplicationButton]="showApplyApplicationButton()"
+  [withdrawApplicationButton]="showWithdrawApplicationButton()" [clientProfileButton]="showToClientButton()"
+  [candidateProfilesButton]="showToCandidatesButton()" [contractorProfileButton]="showToContractorButton()"
+  [editButton]="showEditButton()" (applyApplication)="onApplyApplication()"
+  (withdrawApplication)="onWithdrawApplication()" (clientProfile)="routeToClient(project.id)"
+  (candidateProfiles)="routeToCandidates(project.id)"></app-project-card>
+
+

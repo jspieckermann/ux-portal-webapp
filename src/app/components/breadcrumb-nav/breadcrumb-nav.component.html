@@ -1,0 +1,6 @@
+<span *ngFor="let crumb of breadcrumbs; index as i">
+  <button *ngIf="breadcrumbs.length > 1 && breadcrumbs.length-1 !== i" mat-button routerLink={{crumb.url}} >{{crumb.label}}</button>
+  <span *ngIf="breadcrumbs.length > 1 && breadcrumbs.length-1 !== i">|</span>
+  <span *ngIf="breadcrumbs.length > 1 && breadcrumbs.length-1 === i"><b>&nbsp;&nbsp;&nbsp;{{crumb.label}}</b></span>
+</span>
+
