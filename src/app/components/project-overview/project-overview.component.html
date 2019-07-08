@@ -8,6 +8,6 @@
 </div>
 <div fxLayout="row wrap" fxLayoutAlign="start start">
   <app-project-card [project]=project [compact]="true" [candidatesStatusIcon]="showCandidatesStatus(project)"
-    [contractStatusIcon]="showContractorStatus(project)" (details)="onDetails(project.id)" fxFlex="30%"
-    *ngFor="let project of projects"></app-project-card>
+    [contractStatusIcon]="showContractorStatus(project)" [completedStatusIcon]="showCompletedStatus(project)"
+    (details)="onDetails(project.id)" fxFlex="30%" *ngFor="let project of projects"></app-project-card>
 </div>

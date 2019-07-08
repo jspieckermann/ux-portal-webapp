@@ -6,7 +6,8 @@
       </mat-card-subtitle>
       <div style="margin-left: auto;">
           <mat-icon matTooltip="Anzahl Bewerber" *ngIf="candidatesStatusIcon" matBadge="{{project.candidates.length}}" matBadgeColor="primary">people</mat-icon>
-          <mat-icon matTooltip="Auftrag vergeben" *ngIf="contractStatusIcon">how_to_reg</mat-icon>
+          <mat-icon matTooltip="Auftrag vergeben" *ngIf="contractStatusIcon">assignment_ind</mat-icon>
+          <mat-icon matTooltip="Abgeschlossen" *ngIf="completedStatusIcon">assignment_turned_in</mat-icon>
       </div>
     </mat-card-header>
     <mat-card-content>
@@ -21,6 +22,7 @@
       <button mat-button *ngIf="withdrawApplicationButton" (click)="onWithdrawApplication()">BEWERBUNG ZURÜCKZIEHEN</button>
       <button mat-button *ngIf="clientProfileButton" (click)="onClientProfile()">KUNDENPROFIL</button>
       <button mat-button *ngIf="candidateProfilesButton" [disabled]="project.candidates.length == 0" matBadge="{{project.candidates.length}}" matBadgeColor="primary" (click)="onCandidateProfiles()">BEWERBER</button>
+      <button mat-button *ngIf="completeButton" (click)="onCompletion()">ABSCHLUSS</button>
       <button mat-button *ngIf="contractorProfileButton" (click)="onContractorProfile()">KONTRAKTOR</button>
       <button mat-button *ngIf="editButton" (click)="onEdit()" >BEARBEITEN</button>
     </mat-card-actions>

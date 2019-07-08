@@ -17,8 +17,10 @@ export class ProjectCardComponent {
   @Input() candidateProfilesButton: boolean;
   @Input() contractorProfileButton: boolean;
   @Input() editButton: boolean;
+  @Input() completeButton: boolean;
   @Input() candidatesStatusIcon: boolean;
   @Input() contractStatusIcon: boolean;
+  @Input() completedStatusIcon: boolean;
 
   @Output() details = new EventEmitter<void>();
   @Output() applyApplication = new EventEmitter<void>();
@@ -27,6 +29,7 @@ export class ProjectCardComponent {
   @Output() candidateProfiles = new EventEmitter<void>();
   @Output() contractorProfile = new EventEmitter<void>();
   @Output() edit = new EventEmitter<void>();
+  @Output() completion = new EventEmitter<void>();
 
   constructor() { }
 
@@ -59,6 +62,11 @@ export class ProjectCardComponent {
 
   onEdit() {
     this.edit.emit();
+  }
+
+  onCompletion() {
+    console.log('completion called on card');
+    this.completion.emit();
   }
 
   onDetails() {

@@ -22,6 +22,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { UserCardPanelComponent } from './components/user-card-panel/user-card-panel.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { BreadcrumbNavComponent } from './components/breadcrumb-nav/breadcrumb-nav.component';
+import { ProjectContractorComponent } from './components/project-contractor/project-contractor.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { BreadcrumbNavComponent } from './components/breadcrumb-nav/breadcrumb-n
     UserCardComponent,
     UserCardPanelComponent,
     ProjectCardComponent,
-    BreadcrumbNavComponent
+    BreadcrumbNavComponent,
+    ProjectContractorComponent
   ],
   imports: [
     BrowserModule,

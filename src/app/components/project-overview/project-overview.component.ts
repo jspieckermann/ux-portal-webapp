@@ -3,6 +3,7 @@ import { Project } from 'src/app/model/Project';
 import { RoutingService } from 'src/app/services/routing.service';
 import { ProjectAdministrationService } from 'src/app/services/project-administration.service';
 import { SigninService } from 'src/app/services/signin.service';
+import { Status } from 'src/app/model/Status';
 
 @Component({
   selector: 'app-project-overview',
@@ -35,7 +36,15 @@ export class ProjectOverviewComponent implements OnInit {
   }
 
   showContractorStatus(project: Project): boolean {
-    return project.contractor != null;
+    return project.contractor != null && !this.isCompleted(project);
+  }
+
+  showCompletedStatus(project: Project): boolean {
+    return this.isCompleted(project);
+  }
+
+  private isCompleted(project: Project): boolean {
+    return project.status === Status.Completed;
   }
 
 }

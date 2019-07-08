@@ -30,7 +30,7 @@ export class SigninService {
   }
 
   getUser(): User {
-    return localStorage.getItem(this.key) != null ?  JSON.parse(localStorage.getItem(this.key)) : null;
+    return localStorage.getItem(this.key) != null ? JSON.parse(localStorage.getItem(this.key)) : null;
   }
 
   isSignedIn(user: User): boolean {

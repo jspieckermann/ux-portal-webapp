@@ -15,6 +15,7 @@ export class HttpService {
     'http://localhost:8080/ux-portal-api/signin';
   public static readonly URL_EXTENSION_CANDIDATES = '/candidates';
   public static readonly URL_EXTENSION_CONTRACTORS = '/contractors';
+  public static readonly URL_EXTENSION_COMPLETE = '/complete';
 
   constructor(private http: HttpClient) {}
 
@@ -22,7 +23,7 @@ export class HttpService {
     return this.http.delete<T>(url);
   }
 
-  doPost<T>(url: string, content: string): Observable<T> {
+  doPost<T>(url: string, content?: string): Observable<T> {
     const headers = new HttpHeaders().set('content-type', 'application/json');
     return this.http.post<T>(url, content, { headers });
   }

@@ -9,6 +9,7 @@ import { ProjectDetailsComponent } from './components/project-details/project-de
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ProjectCandidatesComponent } from './components/project-candidates/project-candidates.component';
 import { ProjectClientComponent } from './components/project-client/project-client.component';
+import { ProjectContractorComponent } from './components/project-contractor/project-contractor.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'project-details/:id', component: ProjectDetailsComponent, data: {breadcrumb: '', breadcrumbShowParameter: true}},
   {path: 'project-candidates/:id', component: ProjectCandidatesComponent,
     data: {breadcrumb: 'Kandidaten', breadcrumbShowParameter: false}},
-  {path: 'project-client/:id', component: ProjectClientComponent, data: {breadcrumb: 'Kunde', breadcrumbShowParameter: false}}
+  {path: 'project-client/:id', component: ProjectClientComponent, data: {breadcrumb: 'Kunde', breadcrumbShowParameter: false}},
+  {path: 'project-contractor/:id', component: ProjectContractorComponent, data: {breadcrumb: 'Kontraktor', breadcrumbShowParameter: false}}
 ];
 
 @NgModule({

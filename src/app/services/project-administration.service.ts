@@ -43,4 +43,9 @@ export class ProjectAdministrationService {
     return this.http.doPost<Project>(url, userAsJson);
   }
 
+  completeProject(id: number): Observable<Project> {
+    const url = HttpService.URL_PROJECTS + '/' + id + HttpService.URL_EXTENSION_COMPLETE;
+    return this.http.doPost<Project>(url);
+  }
+
 }

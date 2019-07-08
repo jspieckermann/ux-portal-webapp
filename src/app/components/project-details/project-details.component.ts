@@ -5,6 +5,7 @@ import { RoutingService } from 'src/app/services/routing.service';
 import { SigninService } from 'src/app/services/signin.service';
 import { MatSnackBar } from '@angular/material';
 import { ProjectAdministrationService } from 'src/app/services/project-administration.service';
+import { Status } from 'src/app/model/Status';
 
 @Component({
   selector: 'app-project-details',
@@ -61,6 +62,20 @@ export class ProjectDetailsComponent implements OnInit {
     );
   }
 
+  onCompleteProject() {
+    console.log('completion called on details');
+    this.projectService.completeProject(this.project.id).subscribe(
+      data => {
+        this.project = data;
+        console.log('Completion SUCCESSFUL: ', JSON.stringify(data));
+        this.routingService.routeToProjectOverview();
+      },
+      error => {
+        console.log('Completion FAILED: ', error.status);
+      }
+    );
+  }
+
   showApplyApplicationButton(): boolean {
     return this.userSignedIn() && !this.contractSigned() && !this.userIsClient() && !this.userIsCandidate();
   }
@@ -81,8 +96,12 @@ export class ProjectDetailsComponent implements OnInit {
     return this.contractSigned();
   }
 
+  showCompleteButton(): boolean {
+    return this.userIsClient() && this.contractSigned() && !this.isCompleted();
+  }
+
   showEditButton(): boolean {
-    return this.userIsClient();
+    return this.userIsClient() && !this.isCompleted();
   }
 
   routeToCandidates(id: number) {
@@ -91,6 +110,10 @@ export class ProjectDetailsComponent implements OnInit {
 
   routeToClient(id: number) {
     this.routingService.routeToProjectClient(id);
+  }
+
+  routeToContractor(id: number) {
+    this.routingService.routeToProjectContractor(id);
   }
 
   private userSignedIn(): boolean {
@@ -107,6 +130,10 @@ export class ProjectDetailsComponent implements OnInit {
 
   private contractSigned(): boolean {
     return this.project.contractor != null;
+  }
+
+  private isCompleted(): boolean {
+    return this.project.status === Status.Completed;
   }
 
 }

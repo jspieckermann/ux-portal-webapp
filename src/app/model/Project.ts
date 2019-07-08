@@ -3,6 +3,7 @@ import { User } from './User';
 export interface Project {
     id: number;
     category: string;
+    status: string;
     headline: string;
     description: string;
     budget: number;
