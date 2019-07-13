@@ -7,9 +7,8 @@ import { ProjectCreateComponent } from './components/project-create/project-crea
 import { ProjectOverviewComponent } from './components/project-overview/project-overview.component';
 import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 import { AuthGuardService } from './guards/auth-guard.service';
-import { ProjectCandidatesComponent } from './components/project-candidates/project-candidates.component';
-import { ProjectClientComponent } from './components/project-client/project-client.component';
-import { ProjectContractorComponent } from './components/project-contractor/project-contractor.component';
+import { FeedbackRequestComponent } from './components/feedback-request/feedback-request.component';
+import { ProjectUserProfilesComponent, Profile } from './components/project-user-profiles/project-user-profiles.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -20,10 +19,14 @@ const routes: Routes = [
     data: {breadcrumb: 'Projekt anlegen', breadcrumbShowParameter: false}},
   {path: 'project-overview', component: ProjectOverviewComponent, data: {breadcrumb: 'Projekte', breadcrumbShowParameter: false}},
   {path: 'project-details/:id', component: ProjectDetailsComponent, data: {breadcrumb: '', breadcrumbShowParameter: true}},
-  {path: 'project-candidates/:id', component: ProjectCandidatesComponent,
-    data: {breadcrumb: 'Kandidaten', breadcrumbShowParameter: false}},
-  {path: 'project-client/:id', component: ProjectClientComponent, data: {breadcrumb: 'Kunde', breadcrumbShowParameter: false}},
-  {path: 'project-contractor/:id', component: ProjectContractorComponent, data: {breadcrumb: 'Kontraktor', breadcrumbShowParameter: false}}
+  {path: 'project-candidates/:id', component: ProjectUserProfilesComponent,
+    data: {breadcrumb: 'Kandidaten', breadcrumbShowParameter: false, showButtons: true, role: Profile.Candidates}},
+  {path: 'project-client/:id', component: ProjectUserProfilesComponent,
+    data: {breadcrumb: 'Kunde', breadcrumbShowParameter: false, showButtons: false, role: Profile.Client}},
+  {path: 'project-contractor/:id', component: ProjectUserProfilesComponent,
+    data: {breadcrumb: 'Kontraktor', breadcrumbShowParameter: false, showButtons: false, role: Profile.Contractor}},
+  {path: 'feedback-requests/:id', component: FeedbackRequestComponent,
+    data: {breadcrumb: 'Bewertungen', breadcrumbShowParameter: false}}
 ];
 
 @NgModule({

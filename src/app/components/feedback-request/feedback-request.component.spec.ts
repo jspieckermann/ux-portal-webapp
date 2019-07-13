@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BreadcrumbNavComponent } from './breadcrumb-nav.component';
+import { FeedbackRequestComponent } from './feedback-request.component';
 
-describe('BreadcrumbNavComponent', () => {
-  let component: BreadcrumbNavComponent;
-  let fixture: ComponentFixture<BreadcrumbNavComponent>;
+describe('FeedbackRequestComponent', () => {
+  let component: FeedbackRequestComponent;
+  let fixture: ComponentFixture<FeedbackRequestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BreadcrumbNavComponent ]
+      declarations: [ FeedbackRequestComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BreadcrumbNavComponent);
+    fixture = TestBed.createComponent(FeedbackRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

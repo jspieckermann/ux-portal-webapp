@@ -15,6 +15,7 @@ export class RoutingService {
   private readonly PROJECT_CANDIDATES = '/project-candidates';
   private readonly PROJECT_CLIENT = '/project-client';
   private readonly PROJECT_CONTRACTOR = '/project-contractor';
+  private readonly FEEDBACK_REQUESTS = '/feedback-requests';
 
   constructor(private router: Router) { }
 
@@ -52,6 +53,10 @@ export class RoutingService {
 
   routeToProjectContractor(id: number) {
     this.routeTo(this.PROJECT_CONTRACTOR + '/' + id);
+  }
+
+  routeToFeedbackRequests(id: number) {
+    this.routeTo(this.FEEDBACK_REQUESTS + '/' + id);
   }
 
   private routeTo(url: string) {

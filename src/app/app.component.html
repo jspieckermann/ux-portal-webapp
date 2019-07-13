@@ -3,8 +3,11 @@
   <span fxFlex="100%">UX-Portal</span>
   <mat-icon *ngIf="currentUser() != null">account_circle</mat-icon>
   <span *ngIf="currentUser() != null">{{currentUser().email}}</span>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
+  <button *ngIf="countFeedbackRequests == 0" mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
+  </button>
+  <button *ngIf="countFeedbackRequests > 0" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon matBadge="{{countFeedbackRequests}}" matBadgeColor="primary">menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
     <button *ngIf="currentUser() == null" mat-menu-item (click)="routeToSignin()">
@@ -15,6 +18,10 @@
       <mat-icon>person_add</mat-icon>
       <span>Registrieren</span>
     </button>
+    <button *ngIf="currentUser() != null" mat-menu-item (click)="routeToFeedback()">
+      <mat-icon matBadge="{{countFeedbackRequests}}" matBadgeColor="primary">add_comment</mat-icon>
+      <span>Offene Bewertungen</span>
+    </button>
     <button *ngIf="currentUser() != null" mat-menu-item (click)="signout()">
       <mat-icon>exit_to_app</mat-icon>
       <span>Abmelden</span>
@@ -22,5 +29,5 @@
   </mat-menu>
 </mat-toolbar>
 <br>
-<app-breadcrumb-nav></app-breadcrumb-nav>
+<app-breadcrumbs></app-breadcrumbs>
 <router-outlet></router-outlet>

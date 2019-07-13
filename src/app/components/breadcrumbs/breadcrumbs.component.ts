@@ -5,11 +5,11 @@ import { filter, map } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'app-breadcrumb-nav',
-  templateUrl: './breadcrumb-nav.component.html',
-  styleUrls: ['./breadcrumb-nav.component.css']
+  selector: 'app-breadcrumbs',
+  templateUrl: './breadcrumbs.component.html',
+  styleUrls: ['./breadcrumbs.component.css']
 })
-export class BreadcrumbNavComponent implements OnInit {
+export class BreadcrumbsComponent implements OnInit {
 
   breadcrumbs: Breadcrumb[] = [];
   private readonly KEY_LABEL = 'breadcrumb';
@@ -31,8 +31,6 @@ export class BreadcrumbNavComponent implements OnInit {
           label: route.snapshot.data[this.KEY_LABEL],
           showParamter: route.snapshot.data[this.KEY_SHOW_PARAMETER]
         };
-        this.logCrumbs();
-        this.logCrumb('New Crumb: ', crumb);
         this.add(crumb);
       });
   }
@@ -40,7 +38,6 @@ export class BreadcrumbNavComponent implements OnInit {
   private add(crumb: Breadcrumb) {
     const index = this.breadcrumbs.map(c => c.url).indexOf(crumb.url);
     if (index >= 0) {
-      console.log('Cutted!');
       this.breadcrumbs.splice(index + 1, this.breadcrumbs.length - index);
     } else {
       crumb.label = crumb.showParamter ? this.getModifiedLabel(crumb) : crumb.label;
@@ -54,16 +51,6 @@ export class BreadcrumbNavComponent implements OnInit {
       return substrings[2];
     }
     return crumb.label;
-  }
-
-  private logCrumbs() {
-    this.breadcrumbs.forEach(crumb => {
-      this.logCrumb('Existing crumbs: ', crumb);
-    });
-  }
-
-  private logCrumb(label: string, crumb: Breadcrumb) {
-    console.log(label + 'URL: ' + crumb.url + ' Label: ' + crumb.label + ' Show Parameter: ' + crumb.showParamter);
   }
 
 }

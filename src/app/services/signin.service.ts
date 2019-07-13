@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/User';
 import { HttpService } from './http.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,13 @@ import { Observable } from 'rxjs';
 export class SigninService {
 
   private key = 'ux_portal_user';
+  private signinSubject: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
   constructor(private http: HttpService) { }
+
+  getSigninSubject(): BehaviorSubject<User> {
+    return this.signinSubject;
+  }
 
   signin(userAsJson: string): Observable<User> {
     return this.http.doPost<User>(HttpService.URL_SIGNIN, userAsJson);
@@ -18,15 +23,17 @@ export class SigninService {
 
   signout() {
     localStorage.removeItem(this.key);
+    this.signinSubject.next(null);
+
   }
 
   getToken(): string {
-    const user = this.getUser();
-    return user != null ? user.token : null;
+    return this.getUser() != null ? this.getUser().token : null;
   }
 
   store(userAsJson: string) {
     localStorage.setItem(this.key, userAsJson);
+    this.signinSubject.next(this.getUser());
   }
 
   getUser(): User {

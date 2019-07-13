@@ -2,11 +2,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/model/User';
 
 @Component({
-  selector: 'app-user-card',
-  templateUrl: './user-card.component.html',
-  styleUrls: ['./user-card.component.css']
+  selector: 'app-user-profile-card',
+  templateUrl: './user-profile-card.component.html',
+  styleUrls: ['./user-profile-card.component.css']
 })
-export class UserCardComponent {
+export class UserProfileCardComponent {
 
   @Input() user: User;
   @Input() showButtons: boolean;

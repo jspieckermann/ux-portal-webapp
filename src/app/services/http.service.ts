@@ -11,11 +11,14 @@ export class HttpService {
     'http://localhost:8080/ux-portal-api/projects';
   public static readonly URL_USERS =
     'http://localhost:8080/ux-portal-api/users';
+  public static readonly URL_USERS_FEEDBACK =
+    'http://localhost:8080/ux-portal-api/users/feedback';
   public static readonly URL_SIGNIN =
     'http://localhost:8080/ux-portal-api/signin';
   public static readonly URL_EXTENSION_CANDIDATES = '/candidates';
   public static readonly URL_EXTENSION_CONTRACTORS = '/contractors';
   public static readonly URL_EXTENSION_COMPLETE = '/complete';
+  public static readonly URL_EXTENSION_FEEDBACK_REQUESTS = '/feedbackRequests';
 
   constructor(private http: HttpClient) {}
 

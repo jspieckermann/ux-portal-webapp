@@ -16,14 +16,14 @@ import { ProjectCreateComponent } from './components/project-create/project-crea
 import { ProjectOverviewComponent } from './components/project-overview/project-overview.component';
 import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 import { AuthGuardService } from './guards/auth-guard.service';
-import { ProjectCandidatesComponent } from './components/project-candidates/project-candidates.component';
-import { ProjectClientComponent } from './components/project-client/project-client.component';
-import { UserCardComponent } from './components/user-card/user-card.component';
+import { UserProfileCardComponent } from './components/user-profile-card/user-profile-card.component';
 import { UserCardPanelComponent } from './components/user-card-panel/user-card-panel.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
-import { BreadcrumbNavComponent } from './components/breadcrumb-nav/breadcrumb-nav.component';
-import { ProjectContractorComponent } from './components/project-contractor/project-contractor.component';
-
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { FeedbackRequestCardComponent } from './components/feedback-request-card/feedback-request-card.component';
+import { FeedbackRequestComponent } from './components/feedback-request/feedback-request.component';
+import { ProjectUserProfilesComponent } from './components/project-user-profiles/project-user-profiles.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +34,14 @@ import { ProjectContractorComponent } from './components/project-contractor/proj
     ProjectCreateComponent,
     ProjectOverviewComponent,
     ProjectDetailsComponent,
-    ProjectCandidatesComponent,
-    ProjectClientComponent,
-    UserCardComponent,
+    UserProfileCardComponent,
     UserCardPanelComponent,
     ProjectCardComponent,
-    BreadcrumbNavComponent,
-    ProjectContractorComponent
+    BreadcrumbsComponent,
+    StarRatingComponent,
+    FeedbackRequestCardComponent,
+    FeedbackRequestComponent,
+    ProjectUserProfilesComponent
   ],
   imports: [
     BrowserModule,
