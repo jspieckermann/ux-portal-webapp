@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatToolbarModule, MatMenuModule,
   MatIconModule, MatDatepickerModule, MatNativeDateModule, MatPaginatorModule,
-  MatSnackBarModule, MatExpansionModule, MatBadgeModule, MatTooltipModule, MatGridListModule } from '@angular/material';
+  MatSnackBarModule, MatExpansionModule, MatBadgeModule, MatTooltipModule, MatGridListModule,
+  MatDividerModule } from '@angular/material';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -18,7 +19,8 @@ const MaterialComponents = [
   MatExpansionModule,
   MatBadgeModule,
   MatTooltipModule,
-  MatGridListModule
+  MatGridListModule,
+  MatDividerModule
 ];
 
 @NgModule({

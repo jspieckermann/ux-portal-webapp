@@ -12,32 +12,40 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  countFeedbackRequests: number;
-  feedbackSubscription: Subscription;
+  numOfFeedbackRequests: number;
+  feedbackRequestSubscription: Subscription;
   signinSubscription: Subscription;
 
   constructor(private signinService: SigninService, private routingService: RoutingService,
               private feedbackService: FeedbackService) { }
 
   ngOnInit(): void {
-    this.feedbackSubscription = this.feedbackService.getFeedbackSubject().subscribe(feedback => {
-      this.countFeedbackRequests = feedback.length;
-    });
-    this.signinSubscription = this.signinService.getSigninSubject().subscribe(user => {
-      if (user != null) {
-        this.feedbackService.startTimer(user.id);
-      } else {
-        this.feedbackService.stopTimer();
-        this.countFeedbackRequests = 0;
+    this.feedbackRequestSubscription = this.feedbackService.feedbackRequestForSubject().subscribe(userIds => {
+      if (userIds.filter(id => this.signinService.getUser() != null &&
+        id === this.signinService.getUser().id).length > 0) {
+        this.retrieveFeedbackRequests();
       }
     });
+    this.signinSubscription = this.signinService.getSigninSubject().subscribe(user => {
+      user != null ? this.retrieveFeedbackRequests() : this.numOfFeedbackRequests = 0;
+    });
     if (this.currentUser() != null) {
-      this.feedbackService.startTimer(this.currentUser().id);
+      this.retrieveFeedbackRequests();
     }
   }
 
+  private retrieveFeedbackRequests() {
+    this.feedbackService.getFeedbackRequests(this.signinService.getUser().id).subscribe(
+      requests => {
+        this.numOfFeedbackRequests = requests.length;
+        console.log('User feedback request retrieval SUCCESSFUL: ', JSON.stringify(requests));
+      },
+      error => {console.log('User feedback request retrieval FAILED: ', error.status); }
+    );
+  }
+
   ngOnDestroy(): void {
-    this.feedbackSubscription.unsubscribe();
+    this.feedbackRequestSubscription.unsubscribe();
     this.signinSubscription.unsubscribe();
   }
 

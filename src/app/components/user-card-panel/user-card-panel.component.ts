@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/model/User';
+import { Feedback } from 'src/app/model/Feedback';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { User } from 'src/app/model/User';
 })
 export class UserCardPanelComponent {
 
-  @Input() users: User[];
+  @Input() model: Map<User, Feedback[]>;
   @Input() showButtons: boolean;
   @Output() reject = new EventEmitter<User>();
   @Output() accept = new EventEmitter<User>();

@@ -19,9 +19,9 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>Bewertungen ansehen</mat-panel-title>
-        <mat-panel-description>9.3 / 10.0 (234)</mat-panel-description>
+        <mat-panel-description>{{getRating()}}</mat-panel-description>
       </mat-expansion-panel-header>
-      <div>Hallo</div>
+      <app-user-feedback-entry [feedback]=entry [showDivider]="i !== feedback.length - 1" *ngFor="let entry of feedback, index as i"></app-user-feedback-entry>
     </mat-expansion-panel>
   </mat-card-footer>
 </mat-card>

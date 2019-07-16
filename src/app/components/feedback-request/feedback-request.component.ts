@@ -40,8 +40,6 @@ export class FeedbackRequestComponent implements OnInit {
       data => {
         console.log('Submit feedback SUCCESSFUL: ', JSON.stringify(data));
         this.update();
-        this.feedbackService.triggerNotification(this.id);
-
       },
       error => {console.log('Submit feedback FAILED: ', error.status); }
     );

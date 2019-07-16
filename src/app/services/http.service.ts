@@ -15,10 +15,14 @@ export class HttpService {
     'http://localhost:8080/ux-portal-api/users/feedback';
   public static readonly URL_SIGNIN =
     'http://localhost:8080/ux-portal-api/signin';
+  public static readonly URL_USERS_FEEDBACK_REQUEST_REGISTER =
+    'http://localhost:8080/ux-portal-api/users/feedbackRequests/register';
+
   public static readonly URL_EXTENSION_CANDIDATES = '/candidates';
   public static readonly URL_EXTENSION_CONTRACTORS = '/contractors';
   public static readonly URL_EXTENSION_COMPLETE = '/complete';
   public static readonly URL_EXTENSION_FEEDBACK_REQUESTS = '/feedbackRequests';
+  public static readonly URL_EXTENSION_FEEDBACK = '/feedback';
 
   constructor(private http: HttpClient) {}
 

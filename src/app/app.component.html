@@ -3,23 +3,23 @@
   <span fxFlex="100%">UX-Portal</span>
   <mat-icon *ngIf="currentUser() != null">account_circle</mat-icon>
   <span *ngIf="currentUser() != null">{{currentUser().email}}</span>
-  <button *ngIf="countFeedbackRequests == 0" mat-icon-button [matMenuTriggerFor]="menu">
+  <button *ngIf="numOfFeedbackRequests == 0" mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
-  <button *ngIf="countFeedbackRequests > 0" mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon matBadge="{{countFeedbackRequests}}" matBadgeColor="primary">menu</mat-icon>
+  <button *ngIf="numOfFeedbackRequests > 0" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon matBadge="{{numOfFeedbackRequests}}" matBadgeColor="primary">menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
     <button *ngIf="currentUser() == null" mat-menu-item (click)="routeToSignin()">
       <mat-icon>person</mat-icon>
       <span>Anmelden</span>
     </button>
-    <button *ngIf="currentUser() == null" mat-menu-item (click)="routeToSignin()">
+    <button *ngIf="currentUser() == null" mat-menu-item (click)="routeToRegister()">
       <mat-icon>person_add</mat-icon>
       <span>Registrieren</span>
     </button>
     <button *ngIf="currentUser() != null" mat-menu-item (click)="routeToFeedback()">
-      <mat-icon matBadge="{{countFeedbackRequests}}" matBadgeColor="primary">add_comment</mat-icon>
+      <mat-icon matBadge="{{numOfFeedbackRequests}}" matBadgeColor="primary">add_comment</mat-icon>
       <span>Offene Bewertungen</span>
     </button>
     <button *ngIf="currentUser() != null" mat-menu-item (click)="signout()">

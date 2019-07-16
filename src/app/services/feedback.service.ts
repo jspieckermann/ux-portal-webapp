@@ -8,45 +8,26 @@ import { HttpService } from './http.service';
 })
 export class FeedbackService {
 
-  private readonly ms = 60000 * 5;
-  private feedbackSubject: BehaviorSubject<Feedback[]> = new BehaviorSubject<Feedback[]>([]);
-  private timer: any;
+  private feedbackRequestFor: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
+  private source: EventSource;
 
-  constructor(private http: HttpService) { }
-
-  getFeedbackSubject(): BehaviorSubject<Feedback[]> {
-    return this.feedbackSubject;
+  constructor(private http: HttpService) {
+    this.source = new EventSource(HttpService.URL_USERS_FEEDBACK_REQUEST_REGISTER);
+    this.source.addEventListener('message', message => {
+      this.feedbackRequestFor.next(JSON.parse(message.data));
+    });
   }
 
-  public startTimer(uid: number) {
-    this.notifyObservers(uid);
-    this.timer = setInterval(() => { this.notifyObservers(uid); }, this.ms);
-  }
-
-  public stopTimer() {
-    clearInterval(this.timer);
-  }
-
-  public triggerNotification(uid: number) {
-    this.stopTimer();
-    this.startTimer(uid);
-  }
-
-  private notifyObservers(uid: number) {
-    this.getFeedbackRequests(uid).subscribe(
-      data => {
-        console.log('Feedback requests retrieval SUCCESSFUL: ', JSON.stringify(data));
-        this.feedbackSubject.next(data);
-      },
-      error => {
-        console.log('Feedback requests retrieval FAILED: ', error.status);
-        this.feedbackSubject.next([]);
-      }
-    );
+  feedbackRequestForSubject(): BehaviorSubject<number[]> {
+    return this.feedbackRequestFor;
   }
 
   getFeedbackRequests(uid: number): Observable<Feedback[]> {
     return this.http.doGet<Feedback[]>(HttpService.URL_USERS + '/' + uid + HttpService.URL_EXTENSION_FEEDBACK_REQUESTS);
+  }
+
+  getFeedback(uid: number): Observable<Feedback[]> {
+    return this.http.doGet<Feedback[]>(HttpService.URL_USERS + '/' + uid + HttpService.URL_EXTENSION_FEEDBACK);
   }
 
   submitFeedback(feedback: string): Observable<Feedback> {

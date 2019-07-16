@@ -4,6 +4,8 @@ import { ProjectAdministrationService } from 'src/app/services/project-administr
 import { User } from 'src/app/model/User';
 import { Project } from 'src/app/model/Project';
 import { RoutingService } from 'src/app/services/routing.service';
+import { FeedbackService } from 'src/app/services/feedback.service';
+import { Feedback } from 'src/app/model/Feedback';
 
 @Component({
   selector: 'app-project-user-profiles',
@@ -20,10 +22,11 @@ export class ProjectUserProfilesComponent implements OnInit {
   role: string;
   id: number;
   users: User[];
+  model: Map<User, Feedback[]> = new Map<User, Feedback[]>();
   project: Project;
 
   constructor(private route: ActivatedRoute, private projectService: ProjectAdministrationService,
-              private routingService: RoutingService) { }
+              private routingService: RoutingService, private feedbackService: FeedbackService) { }
 
   ngOnInit() {
     this.showButtons = this.route.snapshot.data[this.KEY_SHOW_BUTTONS];
@@ -34,9 +37,19 @@ export class ProjectUserProfilesComponent implements OnInit {
         this.project = data;
         this.users = this.getProfiles();
         console.log('User retrieval SUCCESSFUL: ', JSON.stringify(this.users));
+        this.users.forEach(user => {
+          this.feedbackService.getFeedback(user.id).subscribe(
+            feedback => {
+              this.model.set(user, feedback);
+              console.log('User feedback retrieval SUCCESSFUL: ', JSON.stringify(feedback));
+            },
+            error => {console.log('User feedback retrieval FAILED: ', error.status); }
+          );
+        });
       },
       error => {console.log('User retrieval FAILED: ', error.status); }
     );
+
   }
 
   onReject(user: User) {

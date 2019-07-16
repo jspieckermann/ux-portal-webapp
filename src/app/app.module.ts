@@ -24,6 +24,7 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 import { FeedbackRequestCardComponent } from './components/feedback-request-card/feedback-request-card.component';
 import { FeedbackRequestComponent } from './components/feedback-request/feedback-request.component';
 import { ProjectUserProfilesComponent } from './components/project-user-profiles/project-user-profiles.component';
+import { UserFeedbackEntryComponent } from './components/user-feedback-entry/user-feedback-entry.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ProjectUserProfilesComponent } from './components/project-user-profiles
     StarRatingComponent,
     FeedbackRequestCardComponent,
     FeedbackRequestComponent,
-    ProjectUserProfilesComponent
+    ProjectUserProfilesComponent,
+    UserFeedbackEntryComponent
   ],
   imports: [
     BrowserModule,
