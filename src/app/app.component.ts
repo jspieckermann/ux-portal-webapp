@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SigninService } from './services/signin.service';
-import { RoutingService } from './services/routing.service';
-import { User } from './model/User';
-import { FeedbackService } from './services/feedback.service';
 import { Subscription } from 'rxjs';
+import { User } from './shared/model/User';
+import { SigninService } from './core/services/signin.service';
+import { RoutingService } from './core/services/routing.service';
+import { FeedbackService } from './core/services/feedback.service';
 
 @Component({
   selector: 'app-root',

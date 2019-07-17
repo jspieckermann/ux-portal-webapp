@@ -1,0 +1,5 @@
+<div fxLayout="row wrap" fxLayoutAlign="start start">
+  <app-user-rating-request-card [feedback]=feedback (submitFeedback)="onSubmitFeedback($event)"
+    fxFlex="45%" *ngFor="let feedback of feedbackRequests"></app-user-rating-request-card>
+</div>
+

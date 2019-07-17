@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Project } from 'src/app/model/Project';
-import { RoutingService } from 'src/app/services/routing.service';
-import { SigninService } from 'src/app/services/signin.service';
 import { MatSnackBar } from '@angular/material';
-import { ProjectAdministrationService } from 'src/app/services/project-administration.service';
-import { Status } from 'src/app/model/Status';
+import { Status } from 'src/app/shared/model/Status';
+import { Project } from 'src/app/shared/model/Project';
+import { RoutingService } from 'src/app/core/services/routing.service';
+import { SigninService } from 'src/app/core/services/signin.service';
+import { ProjectAdministrationService } from 'src/app/core/services/project-administration.service';
 
 @Component({
   selector: 'app-project-details',

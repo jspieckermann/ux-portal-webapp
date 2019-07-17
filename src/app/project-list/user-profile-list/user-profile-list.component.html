@@ -1,0 +1,4 @@
+<div fxLayout="row wrap" fxLayoutAlign="start start">
+  <app-user-profile-card [user]=entry.key [feedback]=entry.value [showButtons]=showButtons (accept)="onAccept($event)" (reject)="onReject($event)"
+    fxFlex="40%" *ngFor="let entry of model | keyvalue"></app-user-profile-card>
+</div>

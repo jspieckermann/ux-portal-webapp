@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectAdministrationService } from 'src/app/services/project-administration.service';
-import { User } from 'src/app/model/User';
-import { Project } from 'src/app/model/Project';
-import { RoutingService } from 'src/app/services/routing.service';
-import { FeedbackService } from 'src/app/services/feedback.service';
-import { Feedback } from 'src/app/model/Feedback';
+import { User } from 'src/app/shared/model/User';
+import { Feedback } from 'src/app/shared/model/Feedback';
+import { Project } from 'src/app/shared/model/Project';
+import { ProjectAdministrationService } from 'src/app/core/services/project-administration.service';
+import { RoutingService } from 'src/app/core/services/routing.service';
+import { FeedbackService } from 'src/app/core/services/feedback.service';
 
 @Component({
   selector: 'app-project-user-profiles',

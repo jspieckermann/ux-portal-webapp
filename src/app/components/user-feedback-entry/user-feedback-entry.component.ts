@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Feedback } from 'src/app/model/Feedback';
+import { Feedback } from 'src/app/shared/model/Feedback';
 
 @Component({
   selector: 'app-user-feedback-entry',

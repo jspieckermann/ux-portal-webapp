@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { User } from 'src/app/model/User';
-import { Feedback } from 'src/app/model/Feedback';
+import { User } from 'src/app/shared/model/User';
+import { Feedback } from 'src/app/shared/model/Feedback';
 
 
 @Component({

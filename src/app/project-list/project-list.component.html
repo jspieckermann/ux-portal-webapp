@@ -1,0 +1,11 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <button mat-raised-button><mat-icon>filter_list</mat-icon></button>
+  <mat-paginator style="background-color: transparent; margin-left: auto" [length]="100" [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="start start">
+  <app-project-card [project]=project [compact]="true" [candidatesStatusIcon]="showCandidatesStatus(project)"
+    [contractStatusIcon]="showContractorStatus(project)" [completedStatusIcon]="showCompletedStatus(project)"
+    (details)="onDetails(project.id)" fxFlex="30%" *ngFor="let project of projects"></app-project-card>
+</div>

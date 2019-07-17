@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{user.firstName}} {{user.lastName}} </mat-card-title>
+    <mat-card-subtitle>
+      {{user.postalCode}} | {{user.city}} | {{user.country}} <br>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="assets/profile.jpg">
+  <mat-card-content>
+    <p><b>Lebenslauf</b><br>{{user.references}}</p>
+    <p><b>Email</b><br>{{user.email}}</p>
+    <p><b>Telefon</b><br>{{user.phone}}</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="showButtons">
+    <button mat-button (click)="onAccept()">ZUSAGEN</button>
+    <button mat-button (click)="onReject()">ABSAGEN</button>
+  </mat-card-actions>
+  <mat-card-footer>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Bewertungen ansehen</mat-panel-title>
+        <mat-panel-description>{{getRating()}}</mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-user-rating-card [feedback]=entry [showDivider]="i !== feedback.length - 1" *ngFor="let entry of feedback, index as i"></app-user-rating-card>
+    </mat-expansion-panel>
+  </mat-card-footer>
+</mat-card>
