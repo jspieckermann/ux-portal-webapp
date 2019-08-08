@@ -1,9 +1,0 @@
-<div>
-  <p><b>{{feedback.project.headline}}</b></p>
-  <p><mat-icon [inline]=true *ngFor="let ratingId of ratingArr;index as i">{{showIcon(i)}}</mat-icon></p>
-  Rolle: {{feedback.role}}<br>
-  Autor: {{feedback.author.email}}<br>
-  Datum: {{feedback.timestamp}}
-  <p>{{feedback.comment}}</p>
-  <mat-divider *ngIf="showDivider" [inset]=true></mat-divider>
-</div>
