@@ -44,12 +44,10 @@ export class ProjectUserProfilesComponent implements OnInit {
             feedback => {
               this.model.set(user, feedback);
               console.log('User feedback retrieval SUCCESSFUL: ', JSON.stringify(feedback));
-            },
-            error => {console.log('User feedback retrieval FAILED: ', error.status); }
+            }
           );
         });
-      },
-      error => {console.log('User retrieval FAILED: ', error.status); }
+      }
     );
 
   }
@@ -62,8 +60,7 @@ export class ProjectUserProfilesComponent implements OnInit {
         if (this.project.candidates.length === 0) {
           this.routingService.routeToProjectDetails(this.project.id);
         }
-      },
-      error => {console.log('Reject user FAILED: ', error.status); }
+      }
     );
   }
 
@@ -73,8 +70,7 @@ export class ProjectUserProfilesComponent implements OnInit {
         console.log('Set contractor SUCCESSFUL: ', JSON.stringify(data));
         this.project = data;
         this.routingService.routeToProjectDetails(this.project.id);
-      },
-      error => {console.log('Set contractor FAILED: ', error.status); }
+      }
     );
   }
 

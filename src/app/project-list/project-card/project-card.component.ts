@@ -65,7 +65,6 @@ export class ProjectCardComponent {
   }
 
   onCompletion() {
-    console.log('completion called on card');
     this.completion.emit();
   }
 

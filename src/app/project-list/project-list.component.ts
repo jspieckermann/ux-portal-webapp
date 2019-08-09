@@ -22,8 +22,7 @@ export class ProjectListComponent implements OnInit {
       data => {
         console.log('Projects retrieval SUCCESSFUL: ', JSON.stringify(data));
         this.projects = data;
-      },
-      error => {console.log('Projects retrieval FAILED: ', error.status); }
+      }
     );
   }
 

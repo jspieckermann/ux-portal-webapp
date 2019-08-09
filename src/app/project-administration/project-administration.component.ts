@@ -41,10 +41,6 @@ export class ProjectAdministrationComponent implements OnInit {
           this.snackbar.open('Projekt erfolgreich angelegt!', '', { duration: 3000 });
           this.routingService.routeToProjectOverview();
         },
-        error => {
-          console.log('Project creation FAILED: ', error.status);
-          this.snackbar.open('Projekt konnte nicht angelegt werden: ' + error.status, '', { duration: 3000 });
-        }
       );
   }
 

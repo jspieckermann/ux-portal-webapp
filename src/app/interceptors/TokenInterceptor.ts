@@ -1,5 +1,5 @@
-import { Injectable, Injector } from '@angular/core';
-import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SigninService } from '../core/services/signin.service';
 

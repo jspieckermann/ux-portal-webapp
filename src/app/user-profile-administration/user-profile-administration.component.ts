@@ -45,10 +45,6 @@ export class UserProfileAdministrationComponent implements OnInit {
           console.log('Registration SUCCESSFUL: ', JSON.stringify(data));
           this.snackbar.open('Willkommen auf dem UX Portal, ' + data.firstName + ' ' + data.lastName, '', { duration: 3000 });
           this.routingService.routeToHome();
-        },
-        error => {
-          console.log('Registration FAILED: ', error.status);
-          this.snackbar.open('Registrierung fehlgeschlagen: ' + error.status, '', { duration: 3000 });
         }
       );
   }

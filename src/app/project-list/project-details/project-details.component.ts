@@ -27,8 +27,7 @@ export class ProjectDetailsComponent implements OnInit {
       data => {
         this.project = data;
         console.log('Project retrieval SUCCESSFUL: ', JSON.stringify(data));
-      },
-      error => {console.log('Project retrieval FAILED: ', error.status); }
+      }
     );
   }
 
@@ -39,10 +38,6 @@ export class ProjectDetailsComponent implements OnInit {
         console.log('Withdraw application SUCCESSFUL: ', JSON.stringify(data));
         this.snackbar.open('Bewerbung zurückgezogen', '', { duration: 3000 });
         this.routingService.routeToProjectOverview();
-      },
-      error => {
-        console.log('Withdraw application FAILED: ', error.status);
-        this.snackbar.open('Bewerbung konnte nicht zurückgezogen werden', '', { duration: 3000 });
       }
     );
   }
@@ -54,10 +49,6 @@ export class ProjectDetailsComponent implements OnInit {
         console.log('Apply application SUCCESSFUL: ', JSON.stringify(data));
         this.snackbar.open('Bewerbung wurde erfasst', '', { duration: 3000 });
         this.routingService.routeToProjectOverview();
-      },
-      error => {
-        console.log('Apply application FAILED: ', error.status);
-        this.snackbar.open('Bewerbung konnte nicht erfasst werden', '', { duration: 3000 });
       }
     );
   }
@@ -69,9 +60,6 @@ export class ProjectDetailsComponent implements OnInit {
         this.project = data;
         console.log('Completion SUCCESSFUL: ', JSON.stringify(data));
         this.routingService.routeToProjectOverview();
-      },
-      error => {
-        console.log('Completion FAILED: ', error.status);
       }
     );
   }

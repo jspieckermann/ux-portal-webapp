@@ -39,8 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
       requests => {
         this.numOfFeedbackRequests = requests.length;
         console.log('User feedback request retrieval SUCCESSFUL: ', JSON.stringify(requests));
-      },
-      error => {console.log('User feedback request retrieval FAILED: ', error.status); }
+      }
     );
   }
 

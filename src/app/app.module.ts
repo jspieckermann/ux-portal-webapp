@@ -13,6 +13,7 @@ import { HomeModule } from './home/home.module';
 import { UserRatingRequestModule } from './user-rating-request/user-rating-request.module';
 import { UserProfileAdministrationModule } from './user-profile-administration/user-profile-administration.module';
 import { ProjectAdministrationModule } from './project-administration/project-administration.module';
+import { HttpErrorInterceptor } from './interceptors/HttpErrorInterceptor';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,11 @@ import { ProjectAdministrationModule } from './project-administration/project-ad
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
     multi: true
   }],
   bootstrap: [AppComponent]

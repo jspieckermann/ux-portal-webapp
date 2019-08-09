@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProjectOverviewComponent } from './components/project-overview/project-overview.component';
-import { ProjectDetailsComponent } from './components/project-details/project-details.component';
-import { ProjectUserProfilesComponent, Profile } from './components/project-user-profiles/project-user-profiles.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},

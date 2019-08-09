@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
 import { RoutingService } from 'src/app/core/services/routing.service';
 import { SigninService } from '../core/services/signin.service';
 
@@ -15,7 +14,7 @@ export class SignInComponent implements OnInit {
   hide = true;
 
   constructor(private formBuilder: FormBuilder, private signinService: SigninService,
-              private snackbar: MatSnackBar, private routingService: RoutingService) { }
+              private routingService: RoutingService) { }
 
   ngOnInit() {
     this.signinForm = this.formBuilder.group({
@@ -32,12 +31,7 @@ export class SignInComponent implements OnInit {
       data => {
         console.log('Signin SUCCESSFUL: ', JSON.stringify(data));
         this.signinService.store(JSON.stringify(data));
-        this.snackbar.open('Willkommen zurück, ' + data.firstName + ' ' + data.lastName, '', { duration: 3000 });
         this.routingService.routeToHome();
-      },
-      error => {
-        console.log('Signin FAILED: ', error.status);
-        this.snackbar.open('Anmeldung fehlgeschlagen: ' + error.status, '', { duration: 3000 });
       }
     );
   }

@@ -31,8 +31,7 @@ export class UserRatingRequestComponent implements OnInit {
         if (this.feedbackRequests.length === 0) {
           this.routingService.routeToHome();
         }
-      },
-      error => {console.log('Feedback request FAILED: ', error.status); }
+      }
     );
   }
 
@@ -41,8 +40,7 @@ export class UserRatingRequestComponent implements OnInit {
       data => {
         console.log('Submit feedback SUCCESSFUL: ', JSON.stringify(data));
         this.update();
-      },
-      error => {console.log('Submit feedback FAILED: ', error.status); }
+      }
     );
   }
 
